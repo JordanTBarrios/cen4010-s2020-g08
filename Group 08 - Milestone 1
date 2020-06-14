@@ -19,20 +19,42 @@ History Table
 
 
 
-Executive Summary
+--Executive Summary--
+The final product of this project will be an informative news-website focused on the ongoing COVID-19 pandemic. The website will use two main APIs. One will be a coronavirus API for raw data, the other will be a news API which will filter for articles mentioning the pandemic across multiple sources. Each article will have a related discussion forum in which users can comment their thoughts on the article. Due to normal new sources having a focus in a variety of areas, it can sometimes be hard to find up-to-date information on the pandemic specifically. The main advantage of this website is it will compile all these articles into one place. Additionally, the private forum will allow users to express their thoughts and feel connected.
 
-Competitive analysis
+--Competitive analysis--
+Competitors' features:
 
-Data definition
+Our features:
 
-Overview, scenarios and use cases
+--Data definition--
+Commenter - Any user who have reading an article uses the discussion board feature to make a comment.
 
-Initial list of high-level function requirements
+--Overview, scenarios and use cases--
+Use Case 1: User creates an account
+  Step 1: User has found the website and is on the front page.
+  Step 2: User clicks on button in upper-right corner named "Sign Up"
+  Step 3: User is prompted to create a username and password with text fields. User must enter password twice else it will display an error.
+  Step 4: User clicks on "Create Account".
+  Step 5: Account is created and the user is automatically logged in and brought back to the front page.
 
-Non-functional requirements
+Use Case 2: User browses website
 
-High-level System Architecture
+Use Case 3: User makes a comment
 
-Team
 
-Checklist
+
+--Initial list of high-level function requirements--
+
+--Non-functional requirements--
+
+--High-level System Architecture--
+News API: https://newsapi.org/
+Coronavirus Data API: 
+
+--Team--
+Scrum Master:
+Product Owner:
+Project/Development Team:
+
+--Checklist--
