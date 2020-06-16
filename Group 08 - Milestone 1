@@ -42,11 +42,11 @@ User creates an acccount:
 -System state on completion: When brought back to the front-page, the user is automatically logged in. The user is free to browse and comment on the website.
 
 User browses website:
--Initial Assumption: 
--Normal: 
+-Initial Assumption: A user has decided they would like to see up-to-date news regarding the pandemic. They are on the front-page of the website.
+-Normal: The front-page of the website shows some articles. By scrolling down, the user finds more articles, order by most recent. The user finds a article they are interested in an clicks on it to view more. Once done, they use can click at the top of the page to return to the front-page. 
 -What can go wrong: 
 -Other activities: 
--System state on completion: 
+-System state on completion: When brought back to the front-page, the user can continue scrolling as before.
 
 User makes a comment:
 -Initial Assumption: 
