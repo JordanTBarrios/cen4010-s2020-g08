@@ -33,7 +33,28 @@ Commenter - Any user who have reading an article uses the discussion board featu
 --Overview, scenarios and use cases--
 Overview: 
 
-Scenarios: 
+Scenarios:
+User creates an acccount:
+-Initial Assumption: A user has decided they would like to make an account in order to comment on articles. They are on the front-page of the website.
+-Normal: Starting from the front-page, the user clicks on the "sign-up" button. The user is then prompted to make a username and password. Users are prompted to enter the password twice, to ensure they match. On submission, the website confirms the creation of the account and brings the user back to the front-page.
+-What can go wrong: In the case where the passwords do not match, the user will be prompted to type both passwords again.
+-Other activities:
+-System state on completion: When brought back to the front-page, the user is automatically logged in. The user is free to browse and comment on the website.
+
+User browses website:
+-Initial Assumption: 
+-Normal: 
+-What can go wrong: 
+-Other activities: 
+-System state on completion: 
+
+User makes a comment:
+-Initial Assumption: 
+-Normal: 
+-What can go wrong: 
+-Other activities: 
+-System state on completion: 
+
 
 Use Cases (stories):
 -Seeking Up-to-date Information:
