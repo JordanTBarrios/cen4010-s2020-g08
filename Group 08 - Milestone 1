@@ -44,16 +44,16 @@ User creates an acccount:
 User browses website:
 -Initial Assumption: A user has decided they would like to see up-to-date news regarding the pandemic. They are on the front-page of the website.
 -Normal: The front-page of the website shows some articles. By scrolling down, the user finds more articles, order by most recent. The user finds a article they are interested in an clicks on it to view more. Once done, they use can click at the top of the page to return to the front-page. 
--What can go wrong: 
+-What can go wrong: If for some reason the article does not load when clicked on, the website will inform the user and bring them back to the front-page.
 -Other activities: 
 -System state on completion: When brought back to the front-page, the user can continue scrolling as before.
 
 User makes a comment:
--Initial Assumption: 
--Normal: 
--What can go wrong: 
--Other activities: 
--System state on completion: 
+-Initial Assumption: After browsing and reading an article, the user has decided they would like to make a comment. They are on the article page.
+-Normal: Starting from the article page, the user scrolls down to find the comment section. The user clicks on the text field and begins typing their comment. Once done, the user submits the comment.
+-What can go wrong: If for some reason the comment fails to post on submission, the user will be informed and asked to try again.
+-Other activities:
+-System state on completion: On successfully submission, the user is informed the comment was posted and is brought back to the article page.
 
 
 Use Cases (stories):
