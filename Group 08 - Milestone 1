@@ -64,9 +64,11 @@ A business-owner, Jill, is seeking up-to-date information on pandemic so she can
 
 
 --Initial list of high-level function requirements--
-Discussion Board/Comment Section on each posted article.
-Ability to create account and log in.
-Pandemic data either on top or on the side of the page.
+Discussion Board/Comment Section: Beneath each article, there will be a comment section related to the article. If the user is logged in, they have the option to make a new comment or reply to someone else's. The comments are ordered from most to least recent.
+
+Account Creation: The user has the option to create an account in order to make comments on articles. Username is visible to others when they make a comment.
+
+Pandemic data: Appears either at the top of the page or on the sides. It is always visible regardless of how far the user scrolls.
 
 --Non-functional requirements--
  Performance:
