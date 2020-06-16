@@ -47,14 +47,23 @@ Use Case 3: User makes a comment
 --Initial list of high-level function requirements--
 
 --Non-functional requirements--
+ Performance:
+ Usability:
+ Accessibility:
+ Expected:
+ Load:   
+ Security requirements: 
+ Storage:
+ Availability: 
+ Fault tolerance:
 
 --High-level System Architecture--
-News API: https://newsapi.org/
-Coronavirus Data API: 
+News API: https://documenter.getpostman.com/view/8854915/SzS7NkEp?version=latest
+Coronavirus Data API: https://documenter.getpostman.com/view/8854915/SzS7R74s?version=latest
 
 --Team--
-Scrum Master:
-Product Owner:
-Project/Development Team:
+Scrum Master: Kyle Costela
+Product Owner: Jordan Barrios
+Project/Development Team: Muhammad Asmar, Parker Hawkins
 
 --Checklist--
