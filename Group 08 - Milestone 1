@@ -31,16 +31,14 @@ Our features:
 Commenter - Any user who have reading an article uses the discussion board feature to make a comment.
 
 --Overview, scenarios and use cases--
-Use Case 1: User creates an account
-  Step 1: User has found the website and is on the front page.
-  Step 2: User clicks on button in upper-right corner named "Sign Up"
-  Step 3: User is prompted to create a username and password with text fields. User must enter password twice else it will display an error.
-  Step 4: User clicks on "Create Account".
-  Step 5: Account is created and the user is automatically logged in and brought back to the front page.
+Overview: 
 
-Use Case 2: User browses website
+Scenarios: 
 
-Use Case 3: User makes a comment
+Use Cases (stories):
+-Seeking Up-to-date Information:
+A business-owner, Jill, is seeking up-to-date information on pandemic so she can plan her next move accordingly. She is only interested in news regarding the pandemic, but many news sites include many articles that are irrelevant to her interest. After searching for a bit, she stumbles across this website. She sees that the website not only has constantly updated statistics regarding the pandemic, but also has related news articles from a variety of sources. Additionally, she finds it interesting that there are discussion posts seperate from the articles, where people share their thoughts on the situation. Jill decides to make an account so she can comment on the articles as well.
+
 
 
 
