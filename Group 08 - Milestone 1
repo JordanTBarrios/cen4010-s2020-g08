@@ -1,0 +1,100 @@
+CEN 4010 Principles of Software Engineering
+Summer 2020
+Milestone 1 Project Proposal and High-level description
+Team: Group 08
+Project Name:
+Team Number: 08
+Muhammad Asmar
+Jordan Barrios
+Kyle Costela
+Parker Hawkins
+June 16, 2020
+History Table
+
+
+
+
+
+
+
+
+
+--Executive Summary--
+The final product of this project will be an informative news-website focused on the ongoing COVID-19 pandemic. The website will use two main APIs. One will be a coronavirus API for raw data, the other will be a news API which will filter for articles mentioning the pandemic across multiple sources. Each article will have a related discussion forum in which users can comment their thoughts on the article. Due to normal new sources having a focus in a variety of areas, it can sometimes be hard to find up-to-date information on the pandemic specifically. The main advantage of this website is it will compile all these articles into one place. Additionally, the private forum will allow users to express their thoughts and feel connected.
+
+--Competitive analysis--
+Competitors' features:
+
+Our features:
+
+--Data definition--
+Commenter - Any user who have reading an article uses the discussion board feature to make a comment.
+
+--Overview, scenarios and use cases--
+Overview: 
+
+Scenarios:
+User creates an acccount:
+-Initial Assumption: A user has decided they would like to make an account in order to comment on articles. They are on the front-page of the website.
+-Normal: Starting from the front-page, the user clicks on the "sign-up" button. The user is then prompted to make a username and password. Users are prompted to enter the password twice, to ensure they match. On submission, the website confirms the creation of the account and brings the user back to the front-page.
+-What can go wrong: In the case where the passwords do not match, the user will be prompted to type both passwords again.
+-Other activities:
+-System state on completion: When brought back to the front-page, the user is automatically logged in. The user is free to browse and comment on the website.
+
+User browses website:
+-Initial Assumption: A user has decided they would like to see up-to-date news regarding the pandemic. They are on the front-page of the website.
+-Normal: The front-page of the website shows some articles. By scrolling down, the user finds more articles, order by most recent. The user finds a article they are interested in an clicks on it to view more. Once done, they use can click at the top of the page to return to the front-page. 
+-What can go wrong: If for some reason the article does not load when clicked on, the website will inform the user and bring them back to the front-page.
+-Other activities: 
+-System state on completion: When brought back to the front-page, the user can continue scrolling as before.
+
+User makes a comment:
+-Initial Assumption: After browsing and reading an article, the user has decided they would like to make a comment. They are on the article page.
+-Normal: Starting from the article page, the user scrolls down to find the comment section. The user clicks on the text field and begins typing their comment. Once done, the user submits the comment.
+-What can go wrong: If for some reason the comment fails to post on submission, the user will be informed and asked to try again.
+-Other activities:
+-System state on completion: On successfully submission, the user is informed the comment was posted and is brought back to the article page.
+
+
+Use Cases (stories):
+-Seeking Up-to-date Information:
+A business-owner, Jill, is seeking up-to-date information on pandemic so she can plan her next move accordingly. She is only interested in news regarding the pandemic, but many news sites include many articles that are irrelevant to her interest. After searching for a bit, she stumbles across this website. She sees that the website not only has constantly updated statistics regarding the pandemic, but also has related news articles from a variety of sources. Additionally, she finds it interesting that there are discussion posts seperate from the articles, where people share their thoughts on the situation. Jill decides to make an account so she can comment on the articles as well.
+
+
+
+
+--Initial list of high-level function requirements--
+Discussion Board/Comment Section: Beneath each article, there will be a comment section related to the article. If the user is logged in, they have the option to make a new comment or reply to someone else's. The comments are ordered from most to least recent.
+
+Account Creation: The user has the option to create an account in order to make comments on articles. Username is visible to others when they make a comment.
+
+Pandemic data: Appears either at the top of the page or on the sides. It is always visible regardless of how far the user scrolls.
+
+--Non-functional requirements--
+ Performance:
+ Usability:
+ Accessibility:
+ Expected:
+ Load:   
+ Security requirements: 
+ Storage:
+ Availability: 
+ Fault tolerance:
+
+--High-level System Architecture--
+News API: https://documenter.getpostman.com/view/8854915/SzS7NkEp?version=latest
+Coronavirus Data API: https://documenter.getpostman.com/view/8854915/SzS7R74s?version=latest
+
+--Team--
+Scrum Master: Kyle Costela
+Product Owner: Jordan Barrios
+Project/Development Team: Muhammad Asmar, Parker Hawkins
+
+--Checklist--
+a)   Team decided on basic means of communications: DONE
+b)   Team found a time slot to meet outside of the class: DONE
+c)   Front and back end team leads chosen: ON TRACK
+d)   Github master chosen: DONE
+e)   Team ready and able to use the chosen back and front-end frameworks: ON TRACK
+f)   Skills of each team member defined and known to all: DONE
+g)   Team   lead   ensured   that   all   team   members   read   the   final   M1   and agree/understand it before submission: ON TRACK
