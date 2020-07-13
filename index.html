@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Scrolling Nav - Start Bootstrap Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/scrolling-nav.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#sign-up">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white">
+        <div class="container text-center">
+            <h1>Welcome to the Coronavirus Website</h1>
+            <p class="lead">In order to use our service, please login or create an account.</p>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>About this service</h2>
+                    <p class="lead">Our service allows you to search coronavirus information by country name. Coronavirus statistics include: daily cases,
+                        total cases, daily deaths, total deaths, country population, those who have recovered, those in critical condition, and the amount of people that have been 
+                        tested. Our service also gives relevant news information relating to coronavirus that you can click on a link and read an article. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="login" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Login:</h2>
+                    <p class="lead">If you have an account, enter in your login credentials to proceed.</p>
+                    <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Username field is empty.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="password">Password</label>
+                                <input type="text" class="form-control" id="password" placeholder="Password" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Password field is empty.
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                        }, false);
+                        });
+                        }, false);
+                        })();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sign-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Create an Account:</h2>
+                    <p class="lead">Don't have an Account? Create one!</p>
+                    <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Username field is empty.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="password">Password</label>
+                                <input type="text" class="form-control" id="password" placeholder="Password" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Password field is empty.
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                    </form>
+
+                    <script>
+                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                        (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                        var forms = document.getElementsByClassName('needs-validation');
+                        // Loop over them and prevent submission
+                        var validation = Array.prototype.filter.call(forms, function(form) {
+                        form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                        }, false);
+                        });
+                        }, false);
+                        })();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="developers" class="bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Learn more about the Developers</h2>
+                    <p class="lead">If you would like to learn more about the developers who have created this website, please click <a href="about.html" target="_blank" style="font-weight:400">here</a> for more information.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white"><a href="https://startbootstrap.com/templates/scrolling-nav/">Link to Bootstrap Template</a></p>
+        </div>
+        <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="js/scrolling-nav.js"></script>
+
+</body>
+
+</html>
