@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -76,74 +75,118 @@
         </div>
     </section>
     
+
 <?php
-$ch = curl_init(); 
-curl_setopt($ch, CURLOPT_URL, 'https://gnews.io/api/v3/search?q=covid&token=d2d2bf8812fe8a0c1e55049d328923a6'); 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-$data = curl_exec($ch); 
-
-//now data can be used
-$json_data = json_decode($data, true);
-
-//establish connection to database
-//$database = mysqli_connect("localhost", "cen4010s2020_g08", "faueng2020", "cen4010s2020_g08");
-//test jbarrios2017 database
-$database = new mysqli("localhost", "cen4010s2020_g08", "faueng2020", "cen4010s2020_g08");
-
-echo "<section id=\"articles\">";
-
-for ($i = 0; $i < 10; $i++) {
-    
-    //attributes of each article
-    $title = $json_data['articles'][$i]['title'];
-    $description = $json_data['articles'][$i]['description'];
-    $img_url = $json_data['articles'][$i]['image'];
-    $article_url = $json_data['articles'][$i]['url'];
-    
-    //database search for article
-    $sql = "SELECT * FROM articles WHERE article_title = '$title'";
-    $result = mysqli_query($database, $sql);
-    $row = mysqli_fetch_array($result,  MYSQLI_ASSOC);
-    $count = 0;
-    $count = mysqli_num_rows($result); // count = 1 if article exists
-    
-    //if this article does not exist in the database, add it to the database
-    if ($count != 1){
-        //article_title, img_url, main_text, article_url
-        $add = "INSERT IGNORE INTO articles VALUES('" . $database->real_escape_string($title) . "', '$img_url', '" . $database->real_escape_string($description) . "', '$article_url')";
+    if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
-        if (!$database->query($add)) {
-            die("Error ($database->errno) $database->error<br>SQL = $add\n");
-        }
-    } 
-    
-    //The main output
-    echo "
+        //search title
+        $search_title = $_POST["title"];
+        $search_SQL = "SELECT * FROM articles WHERE article_title LIKE '%" . $search_title . "%'";
+        
+        //connect to database
+        $database = new mysqli("localhost", "cen4010s2020_g08", "faueng2020", "cen4010s2020_g08");
+        //$result = mysqli_query($database, $search_SQL);
+        $result = $database->query($search_SQL);
+        $count = mysqli_num_rows($result);
+        
+        echo "<section id=\"articles\">";
+        if (!($count > 0)){
+            //if article is not in database, search api
+            
+            echo "
+            
             <div class=\"container\">
                 <div class=\"row\">
                     <div class=\"col-lg-8 mx-auto\">
-                        <object data=\"" . $img_url . "\" type=\"image/png\">
-                            <img src=\"https://img.icons8.com/nolan/64/image.png\">
-                        </object>
-                        <h2>" . $title . "</h2>
-                        <p class=\"lead\"> " . $description . " 
-                        </p>
-                        <a class=\"btn btn-primary\">Read More</a>
+                        <h2>Sorry, this title does not exist in the database, so no comments are yet associated with this/these articles. Instead, here are the first 10 results from the GNews API.</h2>
                     </div>
                 </div>
             </div>
-        ";
-    echo "<br>Original Link: " . $article_url;
-    echo "<br>";
-}
+            
+            ";
+            
+            //connect to GNews API
+            $ch = curl_init(); 
+            curl_setopt($ch, CURLOPT_URL, 'https://gnews.io/api/v3/search?q=covid%20'.$search_title.'&token=d2d2bf8812fe8a0c1e55049d328923a6'); 
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+            $data = curl_exec($ch); 
 
-echo "</section>";
-
-curl_close($ch); 
-
-?>
+            //now data can be used
+            $json_data = json_decode($data, true);
+            
+            
+            for ($i = 0; $i < 10; $i++) {
+                
+                //attributes of each article
+                $title = $json_data['articles'][$i]['title'];
+                $description = $json_data['articles'][$i]['description'];
+                $img_url = $json_data['articles'][$i]['image'];
+                $article_url = $json_data['articles'][$i]['url'];
     
+                //automatically add article to database
+                //article_title, img_url, main_text, article_url
+                $add = "INSERT IGNORE INTO articles VALUES('" . $database->real_escape_string($title) . "', '$img_url', '" . $database->real_escape_string($description) . "', '$article_url')";
+        
+                if (!$database->query($add)) {
+                    die("Error ($database->errno) $database->error<br>SQL = $add\n");
+                }
+            
+                echo "
+            
+                <div class=\"container\">
+                    <div class=\"row\">
+                        <div class=\"col-lg-8 mx-auto\">
+                            <object data=\"" . $img_url . "\" type=\"image/png\">
+                                <img src=\"https://img.icons8.com/nolan/64/image.png\">
+                            </object>
+                            <h2>" . $title . "</h2>
+                            <p class=\"lead\"> " . $description . " 
+                            </p>
+                            <a class=\"btn btn-primary\">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            
+                ";
+                
+            }
+            
+        } else {
+            //article title is found in database
+            
+            while ($row = $result->fetch_assoc()) {
+                
+                $title = $row["article_title"];
+                $description = $row["main_text"];
+                $img_url = $row["img_url"];
+                $article_url = $row["article_url"];
+                
+                echo "
+            
+                <div class=\"container\">
+                    <div class=\"row\">
+                        <div class=\"col-lg-8 mx-auto\">
+                            <object data=\"" . $img_url . "\" type=\"image/png\">
+                                <img src=\"https://img.icons8.com/nolan/64/image.png\">
+                            </object>
+                            <h2>" . $title . "</h2>
+                            <p class=\"lead\"> " . $description . " 
+                            </p>
+                            <a class=\"btn btn-primary\">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            
+                ";
+                
+            }
+        }
+        echo "</section>";
+        
+        
+    }
+?>
     
 
     <section id="developers" class="bg-light">
