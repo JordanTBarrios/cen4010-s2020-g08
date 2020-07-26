@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Scrolling Nav - Start Bootstrap Template</title>
+  <title>Home Screen</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="home.php">Home</a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -70,11 +70,11 @@
                 <div class="col-lg-8 mx-auto">
                     <h2>Login:</h2>
                     <p class="lead">If you have an account, enter in your login credentials to proceed.</p>
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" action="login.php" method="post" novalidate>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                <input type="text" class="form-control" id="login-username" name="username" placeholder="Username" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="password">Password</label>
-                                <input type="text" class="form-control" id="password" placeholder="Password" required>
+                                <input type="text" class="form-control" id="login-password" name="password" placeholder="Password" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -127,11 +127,11 @@
                 <div class="col-lg-8 mx-auto">
                     <h2>Create an Account:</h2>
                     <p class="lead">Don't have an Account? Create one!</p>
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" action="createaccount.php" method="post" novalidate>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -141,12 +141,21 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="password">Password</label>
-                                <input type="text" class="form-control" id="password" placeholder="Password" required>
+                                <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
                                 <div class="invalid-feedback">
                                     Password field is empty.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="example@gmail.com" required>
+                                <div class="invalid-feedback">
+                                    Email field is empty.
                                 </div>
                             </div>
                         </div>
@@ -187,10 +196,7 @@
                 </div>
             </div>
         </div>
-        
-        
     </section>
-    
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
@@ -209,9 +215,7 @@
 
     <!-- Custom JavaScript for this theme -->
     <script src="js/scrolling-nav.js"></script>
-    
-    <!-- Article Search -->
-    <script src="js/article.js"></script>
+
 </body>
 
 </html>
