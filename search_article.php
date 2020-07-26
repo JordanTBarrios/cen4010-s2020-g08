@@ -37,6 +37,9 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#sign-up">Sign Up</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="corona_data.php">COVID-19 Data</a>
+                    </li>
                 </ul>
             </div>
         </div>

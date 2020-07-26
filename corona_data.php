@@ -1,4 +1,3 @@
-
 <html lang="en">
 
 <head>
@@ -48,7 +47,7 @@
 
     <header class="bg-primary text-white">
         <div class="container text-center">
-            <h1>Current COVID-19 Articles</h1>
+            <h1>COVID-19 Data by Country</h1>
             <p class="lead">In order to use our service, please login or create an account.</p>
         </div>
     </header>
@@ -58,12 +57,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <p class="lead">Browse the latest articles or search by title.</p>
-                    <form class="needs-validation" method="post" action="search_article.php">
+                    <p class="lead">Search current data by country</p>
+                    <form class="needs-validation" method="post" action="corona_data.php">
                         <div class="form-row">
                             <div class="col-md mb-3">
                                 <label for="title">Search</label>
-                                <input type="text" class="form-control" id="title" placeholder="Article Title" name="title" required>
+                                <input type="text" class="form-control" id="country" placeholder="Country Name" name="country" required>
                                 <div class="valid-feedback">
                                     Looks good!
                                 </div>
@@ -80,70 +79,118 @@
     </section>
     
 <?php
-$ch = curl_init(); 
-curl_setopt($ch, CURLOPT_URL, 'https://gnews.io/api/v3/search?q=covid&token=d2d2bf8812fe8a0c1e55049d328923a6'); 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
-curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-$data = curl_exec($ch); 
-
-//now data can be used
-$json_data = json_decode($data, true);
-
-//establish connection to database
-//$database = mysqli_connect("localhost", "cen4010s2020_g08", "faueng2020", "cen4010s2020_g08");
-//test jbarrios2017 database
-$database = new mysqli("localhost", "cen4010s2020_g08", "faueng2020", "cen4010s2020_g08");
-
-echo "<section id=\"articles\">";
-
-for ($i = 0; $i < 10; $i++) {
     
-    //attributes of each article
-    $title = $json_data['articles'][$i]['title'];
-    $description = $json_data['articles'][$i]['description'];
-    $img_url = $json_data['articles'][$i]['image'];
-    $article_url = $json_data['articles'][$i]['url'];
+    //get global data
+    $ch2 = curl_init(); 
+    curl_setopt($ch2, CURLOPT_URL, 'https://disease.sh/v3/covid-19/all'); 
+    curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true); 
+    curl_setopt($ch2, CURLOPT_FOLLOWLOCATION, true);
+    $data2 = curl_exec($ch2); 
+
+    //now data can be used
+    $json_data2 = json_decode($data2, true);
     
-    //database search for article
-    $sql = "SELECT * FROM articles WHERE article_title = '$title'";
-    $result = mysqli_query($database, $sql);
-    $row = mysqli_fetch_array($result,  MYSQLI_ASSOC);
-    $count = 0;
-    $count = mysqli_num_rows($result); // count = 1 if article exists
+    $global_cases = $json_data2['cases'];
+    $global_deaths = $json_data2['cases'];
+    $global_recovered = $json_data2['cases'];
     
-    //if this article does not exist in the database, add it to the database
-    if ($count != 1){
-        //article_title, img_url, main_text, article_url
-        $add = "INSERT IGNORE INTO articles VALUES('" . $database->real_escape_string($title) . "', '$img_url', '" . $database->real_escape_string($description) . "', '$article_url')";
-        
-        if (!$database->query($add)) {
-            die("Error ($database->errno) $database->error<br>SQL = $add\n");
-        }
-    } 
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    //if user types in a specific country
     
-    //The main output
+    //search country
+    $search_country = $_POST["country"];
+    
+    $ch = curl_init(); 
+    curl_setopt($ch, CURLOPT_URL, 'https://disease.sh/v3/covid-19/countries/'.$search_country); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    $data = curl_exec($ch); 
+
+    //now data can be used
+    $json_data = json_decode($data, true);
+    
+    //attributes of each country
+    $country_flag = $json_data['countryInfo']['flag'];
+    $country_cases = $json_data['cases'];
+    $country_cases_today = $json_data['todayCases'];
+    $country_deaths = $json_data['deaths'];
+    $country_deaths_today = $json_data['todayDeaths'];
+    $country_recovered = $json_data['recovered'];
+    
+} else {
+    //otherwise, default show USA COVID-19 data
+    
+    $ch = curl_init(); 
+    curl_setopt($ch, CURLOPT_URL, 'https://disease.sh/v3/covid-19/countries/usa'); 
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); 
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    $data = curl_exec($ch); 
+
+    //now data can be used
+    $json_data = json_decode($data, true);
+    
+    
+    //attributes of each country
+    $search_country = "usa";
+    $country_flag = "https://disease.sh/assets/img/flags/us.png";
+    $country_cases = $json_data['cases'];
+    $country_cases_today = $json_data['todayCases'];
+    $country_deaths = $json_data['deaths'];
+    $country_deaths_today = $json_data['todayDeaths'];
+    $country_recovered = $json_data['recovered'];
+    
+}
+    
+//display today's data for country
     echo "
+        <section id=\"covid_data\">
+            
             <div class=\"container\">
                 <div class=\"row\">
                     <div class=\"col-lg-8 mx-auto\">
-                        <object data=\"" . $img_url . "\" type=\"image/png\">
-                            <img src=\"https://img.icons8.com/nolan/64/image.png\">
-                        </object>
-                        <h2>" . $title . "</h2>
-                        <p class=\"lead\"> " . $description . " 
+                    
+                        <img src=\"".$country_flag."\">
+                        <h2>Today's Statistics: " . $search_country . "</h2>
+                        <p class=\"lead\">Today's Cases: " . $country_cases_today . "
                         </p>
-                        <a class=\"btn btn-primary\">Read More</a>
+                        <p class=\"lead\">Today's Deaths: " . $country_deaths_today . "
+                        </p>
+                        
                     </div>
                 </div>
             </div>
-        ";
-    echo "<br>Original Link: " . $article_url;
-    echo "<br>";
-}
+            
+            <div class=\"container\">
+                <div class=\"row\">
+                    <div class=\"col-lg-8 mx-auto\">
+                    
+                        <h2>Global Comparison</h2>
+                        <p class=\"lead\">Cases (".$search_country."): " . $country_cases . "
+                        </p>
+                        <p class=\"lead\">Cases (global): " . $global_cases . "
+                        </p>
+                        <p class=\"lead\">Deaths (".$search_country."): " . $country_deaths . "
+                        </p>
+                        <p class=\"lead\">Deaths (global): " . $global_deaths . "
+                        </p>
+                        <p class=\"lead\">Recovered (".$search_country."): " . $country_recovered . "
+                        </p>
+                        <p class=\"lead\">Recovered (global): " . $global_recovered . "
+                        </p>
+                        
+                    </div>
+                </div>
+            </div>
+        
+        </section>
+    
+    
+    ";
+    
+//display global vs country data
 
-echo "</section>";
-
-curl_close($ch); 
+curl_close($ch2);
+curl_close($ch);
 
 ?>
     
