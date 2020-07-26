@@ -42,7 +42,7 @@
                         <a class="nav-link js-scroll-trigger" href="corona_data.php">COVID-19 Data</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="emailnotifications.html">Email Notifications</a>
+                        <a class="nav-link js-scroll-trigger" href="emailnotifications.php">Email Notifications</a>
                     </li>
                 </ul>
             </div>
