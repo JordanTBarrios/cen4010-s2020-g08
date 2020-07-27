@@ -135,13 +135,15 @@ for ($i = 0; $i < 10; $i++) {
                         <h2>" . $title . "</h2>
                         <p class=\"lead\"> " . $description . " 
                         </p>
-                        <a class=\"btn btn-primary\">Read More</a>
+                        <form class=\"needs-validation\" method=\"post\" action=\"article_view.php\">
+                            <input type=\"text\" value=\"".$title."\" name=\"article_title\" style=\"display:none;\">
+                            <button class=\"btn btn-primary\" type=\"submit\">Read More</button>
+                        </form>
                     </div>
                 </div>
             </div>
         ";
-    echo "<br>Original Link: " . $article_url;
-    echo "<br>";
+    
 }
 
 echo "</section>";

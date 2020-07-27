@@ -40,6 +40,9 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="corona_data.php">COVID-19 Data</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="emailnotifications.php">Email Notifications</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -146,7 +149,10 @@
                             <h2>" . $title . "</h2>
                             <p class=\"lead\"> " . $description . " 
                             </p>
-                            <a class=\"btn btn-primary\">Read More</a>
+                            <form class=\"needs-validation\" method=\"post\" action=\"article_view.php\">
+                                <input type=\"text\" value=\"".$title."\" name=\"article_title\" style=\"display:none;\">
+                                <button class=\"btn btn-primary\" type=\"submit\">Read More</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -176,7 +182,10 @@
                             <h2>" . $title . "</h2>
                             <p class=\"lead\"> " . $description . " 
                             </p>
-                            <a class=\"btn btn-primary\">Read More</a>
+                            <form class=\"needs-validation\" method=\"post\" action=\"article_view.php\">
+                                <input type=\"text\" value=\"".$title."\" name=\"article_title\" style=\"display:none;\">
+                                <button class=\"btn btn-primary\" type=\"submit\">Read More</button>
+                            </form>
                         </div>
                     </div>
                 </div>
