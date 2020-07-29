@@ -55,13 +55,14 @@
             <p class="lead">In order to use our service, please login or create an account.</p>
         </div>
     </header>
-    
+
+
 <?php
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
-        
-        $database = new mysqli("localhost", "phawkins2019", "JmSBN1eD8e", "phawkins2019");
+        date_default_timezone_set('America/New_York');
+        $database = new mysqli("localhost", "cen4010s2020_g08", "faueng2020", "cen4010s2020_g08");
         
         //the article title
         //use this to find the associated comments
@@ -81,7 +82,7 @@
             $article_url = $row["article_url"];
             
             echo "
-                
+                <p> $row[article_title]</p>
                 <section id=\"articles\">
                     <div class=\"container\">
                         <div class=\"row\">
@@ -104,30 +105,33 @@
             
             
             //add comments where have the same associated article_title
-            date_default_timezone_set('America/New_York');
+            
 
-            function setComments($database) {
+            function setComments($database, $passed_title, $row) {
+                echo "<p>'$passed_title'</p>
+                    <p>'$row[article_title]'</p>
+                ";
                 if (isset($_POST['commentSubmit'])){
                     $uid = $_POST['uid'];
                     $date = $_POST['date'];
                     $message = $_POST['message'];
-                    $passed_title = $_POST['article_title'];
             
-                    $sql = "INSERT INTO comments (uid, date, message, passed_title) VALUES ('$uid', '$date', '$message','$passed_title')";
-                    $result = $database->query($sql);
+                    $sql = "INSERT INTO comments (uid, date, message) VALUES ('$uid', '$date', '$message')";
+                    $result = mysqli_query($database, $sql);
                 }
             
             }
 
-            function getComments($database){
-                $sql = "SELECT * FROM comments where article_title = '$passed_title'";
-                $result = $database-> query($sql);
-                while ($row = $result->fetch_assoc()){
+            function getComments($database, $passed_title, $row){
+                $sql = "SELECT * FROM comments";
+                $result = mysqli_query($database, $sql);
+                while ($row = mysqli_fetch_array($result,  MYSQLI_ASSOC)){
                     echo "<div class = 'comment-box'><p>";
                         echo $row['uid']."<br>";
                         echo $row['date']."<br>";
                         echo nl2br($row['message']);
                     echo "</p></div>";
+
             
                 }
                 
@@ -141,14 +145,19 @@
                             <div class=\"col-lg-8 mx-auto\">
                             
                                 <h3>
-                                    <form method='POST' action='".setComments($database)."'>
+        
+                                
+                                    <form method='POST' action='".setComments($database, $passed_title, $row)."'>
                                         <input type='hidden' name = 'uid' value = 'Anonymous'>
-                                        <input type='hidden' name = 'uid' value = '".date('m-d-y h:i:s')."'>
+                                        <input type='hidden' name = 'date' value = '".date('Y-m-d H:i:s')."'>
                                         <textarea name='message'></textarea><br>
                                         <button type = 'submit' name='commentSubmit'>Comment</button>
                                     </form>
+                                    
 
-                                    getcomments($database);
+                                    getComment($database, $passed_title, $row)
+
+                                    
                                 </h3>
                                 
                             </div>
