@@ -91,12 +91,10 @@
         
         //connect to database
         $database = new mysqli("localhost", "cen4010s2020_g08", "faueng2020", "cen4010s2020_g08");
-        //$result = mysqli_query($database, $search_SQL);
         $result = $database->query($search_SQL);
-        $count = mysqli_num_rows($result);
         
         echo "<section id=\"articles\">";
-        if (!($count > 0)){
+        if (!$result || mysqli_num_rows($result) == 0){
             //if article is not in database, search api
             
             echo "

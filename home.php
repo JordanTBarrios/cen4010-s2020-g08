@@ -109,13 +109,11 @@ for ($i = 0; $i < 10; $i++) {
     
     //database search for article
     $sql = "SELECT * FROM articles WHERE article_title = '$title'";
-    $result = mysqli_query($database, $sql);
-    $row = mysqli_fetch_array($result,  MYSQLI_ASSOC);
-    $count = 0;
-    $count = mysqli_num_rows($result); // count = 1 if article exists
+    $result = $database->query($sql);
     
+    // count = 1 if article exists
     //if this article does not exist in the database, add it to the database
-    if ($count != 1){
+    if (!$result || mysqli_num_rows($result) == 0){
         //article_title, img_url, main_text, article_url
         $add = "INSERT IGNORE INTO articles VALUES('" . $database->real_escape_string($title) . "', '$img_url', '" . $database->real_escape_string($description) . "', '$article_url')";
         
