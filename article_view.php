@@ -70,10 +70,10 @@
         
         $sql = "SELECT * FROM articles WHERE article_title = '$passed_title'";
         $result = mysqli_query($database, $sql);
-        $row = mysqli_fetch_array($result,  MYSQLI_ASSOC);
-        $count = mysqli_num_rows($result); // count = 1 if article exists
+        // count = 1 if article exists
         
-        if ($count != 0) {
+        if ($result && mysqli_num_rows($result) != 0) {
+            $row = mysqli_fetch_array($result,  MYSQLI_ASSOC);
             
             //get article attributes from table
             $title = $row["article_title"];

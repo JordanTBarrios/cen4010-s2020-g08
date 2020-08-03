@@ -148,7 +148,7 @@
                             <p class=\"lead\"> " . $description . " 
                             </p>
                             <form class=\"needs-validation\" method=\"post\" action=\"article_view.php\">
-                                <input type=\"text\" value=\"".$title."\" name=\"article_title\" style=\"display:none;\">
+                                <input type=\"text\" value=\"". $database->real_escape_string($title) ."\" name=\"article_title\" style=\"display:none;\">
                                 <button class=\"btn btn-primary\" type=\"submit\">Read More</button>
                             </form>
                         </div>
@@ -181,7 +181,7 @@
                             <p class=\"lead\"> " . $description . " 
                             </p>
                             <form class=\"needs-validation\" method=\"post\" action=\"article_view.php\">
-                                <input type=\"text\" value=\"".$title."\" name=\"article_title\" style=\"display:none;\">
+                                <input type=\"text\" value=\"". $database->real_escape_string($title) ."\" name=\"article_title\" style=\"display:none;\">
                                 <button class=\"btn btn-primary\" type=\"submit\">Read More</button>
                             </form>
                         </div>
