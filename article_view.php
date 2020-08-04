@@ -164,7 +164,6 @@
                                     </form>
                                     
 
-                                    getComment($database, $passed_title, $row)
 
                                     
                                 </h3>
