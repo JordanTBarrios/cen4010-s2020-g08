@@ -115,22 +115,23 @@
             //add comments where have the same associated article_title
             
 
-            function setComments($database, $title) {
+            function setComments($database) {
 
                 if (isset($_POST['commentSubmit'])){
                     $uid = $_POST['uid'];
                     $date = $_POST['date'];
                     $message = $_POST['message'];
-                    $title = $_POST['article_title'];
+                    $title = $_POST['title'];
             
-                    $sql = "INSERT INTO comments (uid, date, message) VALUES ('$uid', '$date', '$message')";
+                    $sql = "INSERT INTO comments (uid, date, message, title) VALUES ('$uid', '$date', '$message', '$title')";
                     $result = mysqli_query($database, $sql);
                 }
             
             }
 
-            function getComments($database, $title){
-                $sql = "SELECT * FROM comments";
+            function getComments($database){
+                $passed_title = $_POST["article_title"];
+                $sql = "SELECT * FROM comments where title = '$passed_title'";
                 $result = $database ->query($sql);
                 while ($row = $result -> fetch_assoc()){
                     echo "<div class = 'comment-box'><p>";
@@ -152,20 +153,22 @@
                             <div class=\"col-lg-8 mx-auto\">
                             
                                 <h3>
-        
+
+
                                 
-                                    <form method='POST' action='".setComments($database, $title)."'>
-                                        
+                                    <form method='POST' action='".setComments($database)."'>
+                                          
+
                                         <input type='hidden' name = 'uid' value = 'Anonymous'>
                                         <input type='hidden' name = 'date' value = '".date('Y-m-d H:i:s')."'>
                                         <textarea name='message'></textarea><br>
                                         <input type=\"text\" value=\"".$title."\" name=\"article_title\" style=\"display:none;\">
-                                        <input type = 'hidden' name = 'article_title' value = \"".$title."\">
+                                        <input type = 'hidden' name = 'title' value = '$title'>
                                         <button type = 'submit' name='commentSubmit'>Comment</button>
                                     </form>
                                     
 
-                                    <p>\".getComments($database, $title);.\"<p>
+                                    ".getComments($database)."
                                     
                                 </h3>
                                 
