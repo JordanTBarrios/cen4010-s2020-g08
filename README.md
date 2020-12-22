@@ -14,7 +14,7 @@ Parker Hawkins
 ### Demonstration Video
 *Click the thumbnail*
 
-[![COVID News Website Demonstration](https://i9.ytimg.com/vi/Q6UD7--MRPE/mq3.jpg?sqp=CJD0g_8F&rs=AOn4CLAluo3OHBb7F0slZWXPvVeRDpmXIQ)](https://www.youtube.com/watch?v=VPWX1nktWxs)
+[![COVID News Website Demonstration](thumbnail.png)](https://www.youtube.com/watch?v=VPWX1nktWxs)
 
 ### Built with
 * HTML, CSS, JavaScript, BootStrap, PHP
